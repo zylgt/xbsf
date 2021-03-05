@@ -36,7 +36,7 @@ export default {
         console.log(tab, event);
       },
       taskDetail(){
-          this.$router.push('/task')
+          this.$router.push('/collectInfo')
       }
   },
   watch: {}

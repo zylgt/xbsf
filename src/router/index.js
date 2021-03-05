@@ -22,6 +22,7 @@ const teacher = () => import('../pages/datum/teacher')
 const indicator = () => import('../pages/datum/indicator')
 
 const collectProgress = () => import('../pages/prograss/collectProgress')
+const collectInfo = () => import('../pages/prograss/collectInfo')
 
 Vue.use(Router)
 
@@ -95,6 +96,10 @@ export default new Router({
         path:'/collectProgress',
         component: collectProgress,
         name:'collectProgress'
+      },{
+        path:'/collectInfo',
+        component: collectInfo,
+        name:'collectInfo'
       }]
     }
   ]

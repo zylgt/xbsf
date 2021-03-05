@@ -77,10 +77,10 @@
                     <el-menu-item index="collectProgress">采集进度</el-menu-item>
                   </el-menu-item-group>
               </el-submenu>
-              <el-menu-item index="qx50"><i class="el-icon-document"></i>QX50 - 移动站点</el-menu-item>
+              <!-- <el-menu-item index="qx50"><i class="el-icon-document"></i>QX50 - 移动站点</el-menu-item>
               <el-menu-item index="qx50l"><i class="el-icon-star-on"></i>Q50L - 车书</el-menu-item>
               <el-menu-item index="mini3d"><i class="el-icon-edit"></i>留资 - 3D小程序</el-menu-item>
-              <el-menu-item index="miniprogram"><i class="el-icon-setting"></i>全系 - 预约小程序</el-menu-item>
+              <el-menu-item index="miniprogram"><i class="el-icon-setting"></i>全系 - 预约小程序</el-menu-item> -->
             </el-menu>
         </el-col>
         <el-col :span="20" style="height: 100%;overflow: auto;">

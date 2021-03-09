@@ -20,8 +20,8 @@
                 </div>
             </el-header>
          </el-row>
-         <el-row style="height: 100%;">
-          <el-col :span="4"  style="min-height: 100%;background-color: #fff;">
+         <el-row style="height: 90%;">
+          <el-col :span="4"  style="min-height: 100%;height:100%;over-flow:auto;background-color: #fff;">
             <div class='menu_logo'>
               <img src="" alt="" class='menu_icon' >
               <p class='menu_text'>评比系统</p>
@@ -34,7 +34,7 @@
                   :value="item.value">
                 </el-option>
               </el-select>
-            <el-menu default-active="qx50" style="min-height: 100%;" router>
+            <el-menu default-active="qx50" style="min-height: 84%;" router>
               <el-submenu index='1'>
                   <template slot="title">
                     <i class="el-icon-data-line"></i>
@@ -77,19 +77,28 @@
                     <el-menu-item index="collectProgress">采集进度</el-menu-item>
                   </el-menu-item-group>
               </el-submenu>
+               <el-submenu index='5'>
+                  <template slot="title">
+                    <i class="el-icon-user"></i>
+                    <span>个人数据</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="personal">个人档案</el-menu-item>
+                  </el-menu-item-group>
+              </el-submenu>
               <!-- <el-menu-item index="qx50"><i class="el-icon-document"></i>QX50 - 移动站点</el-menu-item>
               <el-menu-item index="qx50l"><i class="el-icon-star-on"></i>Q50L - 车书</el-menu-item>
               <el-menu-item index="mini3d"><i class="el-icon-edit"></i>留资 - 3D小程序</el-menu-item>
               <el-menu-item index="miniprogram"><i class="el-icon-setting"></i>全系 - 预约小程序</el-menu-item> -->
             </el-menu>
-        </el-col>
-        <el-col :span="20" style="height: 100%;overflow: auto;">
-                  <div class='main'>
-                      <keep-alive>
-                          <router-view></router-view>
-                      </keep-alive>
-                  </div>
-        </el-col>
+          </el-col>
+          <el-col :span="20" style="height: 100%;overflow: auto;">
+                    <div class='main'>
+                        <keep-alive>
+                            <router-view></router-view>
+                        </keep-alive>
+                    </div>
+          </el-col>
 		</el-row>
    </div>
 </template>
@@ -126,7 +135,6 @@ export default {
         margin:30px;
         margin-bottom:0;
         padding:30px;
-        padding-bottom:0;
         background:#fff;
     }
     .manage_page{

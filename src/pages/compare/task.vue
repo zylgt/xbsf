@@ -126,4 +126,9 @@ export default {
     font-size:14px;
     color:#333;
 }
+.taskBox .el-button{
+    width:120px;
+    display: block;
+    margin:10px auto;
+}
 </style>

@@ -87,7 +87,14 @@ export default {
   computed: {},
   beforeMount () {},
   mounted () {},
-  methods: {},
+  methods: {
+      filterClass(value, row, column){
+        return row.class === value;
+        },
+        filterObject(value, row, column){
+        return row.object === value;
+        }
+  },
   watch: {}
 }
 </script>

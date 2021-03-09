@@ -24,6 +24,8 @@ const indicator = () => import('../pages/datum/indicator')
 const collectProgress = () => import('../pages/prograss/collectProgress')
 const collectInfo = () => import('../pages/prograss/collectInfo')
 
+const personal = () => import('../pages/personal/personal')
+
 Vue.use(Router)
 
 export default new Router({
@@ -100,6 +102,10 @@ export default new Router({
         path:'/collectInfo',
         component: collectInfo,
         name:'collectInfo'
+      },{
+        path:'/personal',
+        component: personal,
+        name:'personal'
       }]
     }
   ]

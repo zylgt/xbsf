@@ -34,7 +34,7 @@
                   :value="item.value">
                 </el-option>
               </el-select>
-            <el-menu default-active="qx50" style="min-height: 84%;" router>
+            <el-menu default-active="all" style="min-height: 84%;" router>
               <el-submenu index='1'>
                   <template slot="title">
                     <i class="el-icon-data-line"></i>

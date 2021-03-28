@@ -30,7 +30,7 @@
   	</div>
 </template>
 
-<script>
+<script> 
   import {login} from '@/api/api'
   import {  setToken } from '@/utils/auth'
   import Cookies from 'js-cookie'
@@ -124,6 +124,7 @@
 	}
 	.logo_name{
 		font-size:36px;
+		font-weight: 600;
 	}
 	.account{
 		font-size:16px;

@@ -4,6 +4,16 @@ import Router from 'vue-router'
 const manage = () => import('../pages/manage')
 const login = () => import('../pages/login')
 
+const home = () => import('../pages/home/home')
+
+const files = () => import('../pages/files')
+
+const teacherHome = () => import('../pages/teacherHome')
+
+const honour = () => import('../pages/total/honour')
+
+const plan1 = () => import('../pages/teacherPlan/plan1')
+
 const all = () => import('../pages/anlayse/all')
 const achievement = () => import('../pages/anlayse/achievement')
 const target = () => import('../pages/anlayse/target')
@@ -35,6 +45,26 @@ export default new Router({
       name: 'manage',
       component: manage,
       children:[{
+        path:'/home',
+        component: home,
+        name:'home'
+      },{
+        path:'/files',
+        component: files,
+        name:'files'
+      },{
+        path:'/teacherHome',
+        component: teacherHome,
+        name:'teacherHome'
+      },{
+        path:'/honour',
+        component: honour,
+        name:'honour'
+      },{
+        path:'/plan1',
+        component: plan1,
+        name:'plan1'
+      },{
         path:'/all',
         component: all,
         name:'all'

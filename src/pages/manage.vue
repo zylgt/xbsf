@@ -1,10 +1,9 @@
 <template>
    <div class="manage_page fillcontain">
-         <el-row>
+        <el-row>
             <el-header height='64px' >
                 <div class='logo' >
-                  <img src="../../static/image/logo.jpeg" alt="" class='logo_icon' >
-                  <p class='logo_text'>北京市海淀北部新区实验学校</p>
+                  <p class='logo_text'>教师专业发展考评 <span style='font-size:18px;' >管理系统</span> </p>
                 </div>
                 <div class='avatar_box'>
                     <i class="el-icon-search" style="width:22px;height:22px;" ></i>
@@ -14,18 +13,15 @@
                         <img src="../../static/image/avatar.png" class="avatar">
                         <p class='name'>用户名</p>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item command="signout">退出</el-dropdown-item>
+                           <el-dropdown-item command="1">修改</el-dropdown-item>
+                            <el-dropdown-item command="2">退出</el-dropdown-item>
                         </el-dropdown-menu>
                     </el-dropdown>
                 </div>
             </el-header>
-         </el-row>
-         <el-row style="height: 90%;">
+        </el-row>
+        <el-row style="height: 90%;">
           <el-col :span="4"  style="min-height: 100%;height:100%;over-flow:auto;background-color: #fff;">
-            <div class='menu_logo'>
-              <img src="" alt="" class='menu_icon' >
-              <p class='menu_text'>评比系统</p>
-            </div>
               <el-select v-model="value" placeholder="请选择" class='selects' >
                 <el-option
                   v-for="item in options"
@@ -34,21 +30,56 @@
                   :value="item.value">
                 </el-option>
               </el-select>
-            <el-menu default-active="all" style="min-height: 84%;" router>
+            <el-menu default-active="home" style="min-height: 84%;" router>
+              <el-menu-item index='/home'>
+                <i class="el-icon-user"></i>
+                <span slot="title">个人首页</span>
+              </el-menu-item>
+              <el-menu-item index='/teacherHome'>
+                <i class="el-icon-s-custom"></i>
+                <span slot="title">教师工作室</span>
+              </el-menu-item>
               <el-submenu index='1'>
+                  <template slot="title">
+                    <i class="el-icon-notebook-1"></i>
+                    <span>教师累积型档案</span>
+                  </template>
+                  <el-menu-item-group>
+                    <el-menu-item index="honour">荣誉获奖</el-menu-item>
+                    <el-menu-item index="honour">研修培训</el-menu-item>
+                    <el-menu-item index="honour">科研成果</el-menu-item>
+                    <el-menu-item index="honour">课堂展示</el-menu-item>
+                    <el-menu-item index="honour">教学基本功</el-menu-item>
+                  </el-menu-item-group>
+              </el-submenu>
+               <el-submenu index='2'>
+                  <template slot="title">
+                    <i class="el-icon-notebook-2"></i>
+                    <span>教师动态型档案</span>
+                  </template>
+                  <el-menu-item-group>
+                      <el-menu-item index="plan1">教研组计划</el-menu-item>
+                      <el-menu-item index="plan1">学科备课组计划</el-menu-item>
+                      <el-menu-item index="plan1">教研组总结</el-menu-item>
+                      <el-menu-item index="plan1">学科备课组总结</el-menu-item>
+                      <el-menu-item index="plan1">教研组计划</el-menu-item>
+                      <el-menu-item index="plan1">学科备课组计划</el-menu-item>
+                  </el-menu-item-group>
+              </el-submenu>
+              <el-submenu index='3'>
                   <template slot="title">
                     <i class="el-icon-data-line"></i>
                     <span>评比分析</span>
                   </template>
                   <el-menu-item-group>
                     <el-menu-item index="all">整体分析</el-menu-item>
-                    <el-menu-item index="achievement">成绩分析</el-menu-item>
+                    <el-menu-item index="honour">成绩分析</el-menu-item>
                     <el-menu-item index="target">指标分析</el-menu-item>
                     <el-menu-item index="compare">对比分析</el-menu-item>
                     <el-menu-item index="comment">评语分析</el-menu-item>
                   </el-menu-item-group>
               </el-submenu>
-              <el-submenu index='2'>
+              <!-- <el-submenu index='2'>
                   <template slot="title">
                     <i class="el-icon-edit-outline"></i>
                     <span>评比任务</span>
@@ -85,11 +116,11 @@
                   <el-menu-item-group>
                     <el-menu-item index="personal">个人档案</el-menu-item>
                   </el-menu-item-group>
-              </el-submenu>
-              <!-- <el-menu-item index="qx50"><i class="el-icon-document"></i>QX50 - 移动站点</el-menu-item>
-              <el-menu-item index="qx50l"><i class="el-icon-star-on"></i>Q50L - 车书</el-menu-item>
-              <el-menu-item index="mini3d"><i class="el-icon-edit"></i>留资 - 3D小程序</el-menu-item>
-              <el-menu-item index="miniprogram"><i class="el-icon-setting"></i>全系 - 预约小程序</el-menu-item> -->
+              </el-submenu> -->
+               <el-menu-item index='/files'>
+                <i class="el-icon-s-check"></i>
+                <span slot="title">档案审核</span>
+              </el-menu-item>
             </el-menu>
           </el-col>
           <el-col :span="20" style="height: 100%;overflow: auto;">
@@ -99,7 +130,25 @@
                         </keep-alive>
                     </div>
           </el-col>
-		</el-row>
+		    </el-row>
+         <el-dialog title="修改密码" :visible.sync="dialogFormVisible">
+        <el-form :model="form" size='mini' :rules="rules" ref="form" >
+            <el-form-item label="账号" label-width="80px">
+            <el-input v-model="form.account" autocomplete="off" style='width:200px;' :disabled="true" placeholder="admin" ></el-input>
+            </el-form-item>
+             <el-form-item label="原始密码" prop='old' label-width="80px">
+            <el-input v-model="form.old" type="password" autocomplete="off" style='width:200px;' ></el-input>
+            </el-form-item>
+             <el-form-item label="新密码" prop='new' label-width="80px">
+            <el-input v-model="form.new" type="password" autocomplete="off" style='width:200px;' ></el-input>
+            </el-form-item>
+            <el-form-item >
+              <el-button @click="dialogFormVisible = false">取 消</el-button>
+              <el-button type="primary" @click="submitForm('form')">确 定</el-button>
+            </el-form-item>
+        </el-form>
+       
+        </el-dialog>
    </div>
 </template>
 <script>
@@ -107,9 +156,28 @@ import {  removeToken } from '@/utils/auth'
 export default {
   name: '',
   data () {
+    var validatePass2 = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请再次输入密码'))
+      } else if (value !== this.form.old) {
+        callback(new Error('两次输入密码不一致!'))
+      } else {
+        callback()
+      }
+    }
     return {
       options:[{value:1,label:'一年级'},{value:2,label:'二年级'},{value:3,label:'三年级'}],
-      value:''
+      value:'',
+      dialogFormVisible:false,
+      form:{
+        account:'',
+        old:'',
+        new:''
+      },
+      rules:{
+        old:[{required: true, message: '请输入原始密码', trigger: 'blur'}],
+        new:[ { required: true, validator: validatePass2, trigger: 'blur' }],
+      }
     }
   },
   components: {},
@@ -118,14 +186,30 @@ export default {
   beforeMount () {},
   mounted () {},
   methods: {
-    handleCommand(){
-      removeToken()
-      this.$message({
-          type: 'success',
-          message: '退出成功'
-      });
-      this.$router.push('/');
-    }
+    handleCommand(e){
+      console.log(e)
+      if(e==2){
+          removeToken()
+          this.$message({
+              type: 'success',
+              message: '退出成功'
+          });
+          this.$router.push('/');
+      }else{
+        this.dialogFormVisible = true
+      }
+    },
+     submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.dialogFormVisible=false
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      
   },
   watch: {}
 }
@@ -134,8 +218,8 @@ export default {
     .main{
         margin:30px;
         margin-bottom:0;
-        padding:30px;
-        background:#fff;
+        /* padding:30px;
+        background:#fff; */
     }
     .manage_page{
         height: 100%;
@@ -178,7 +262,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background:#324057;
+        background:#2365AE;
     }
     .el-dropdown{
         height:42px;
@@ -205,7 +289,7 @@ export default {
       justify-content: center;
     }
     .logo_text{
-      font-size:28px;
+      font-size:24px;
       color:#fff;
     }
     .avatar_box{
@@ -243,5 +327,6 @@ export default {
       display: block;
       margin:0 auto;
       width:90%;
+      padding-top:20px;
     }
 </style>

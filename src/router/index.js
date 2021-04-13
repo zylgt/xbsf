@@ -61,9 +61,45 @@ export default new Router({
         component: honour,
         name:'honour'
       },{
+        path:'/study',
+        component: honour,
+        name:'study'
+      },{
+        path:'/result',
+        component: honour,
+        name:'result'
+      },{
+        path:'/open',
+        component: honour,
+        name:'open'
+      },{
+        path:'/base',
+        component: honour,
+        name:'base'
+      },{
         path:'/plan1',
         component: plan1,
         name:'plan1'
+      },{
+        path:'/plan2',
+        component: plan1,
+        name:'plan2'
+      },{
+        path:'/plan3',
+        component: plan1,
+        name:'plan3'
+      },{
+        path:'/plan4',
+        component: plan1,
+        name:'plan4'
+      },{
+        path:'/plan5',
+        component: plan1,
+        name:'plan5'
+      },{
+        path:'/plan6',
+        component: plan1,
+        name:'plan6'
       },{
         path:'/all',
         component: all,

@@ -209,6 +209,12 @@ export default {
                     },
                     tooltip: {},
                     xAxis: {
+                        axisTick:{
+                            show:false
+                        },
+                        axisLabel:{
+                            interval:0
+                        },
                         data: ['荣誉获奖', '研修培训', '科研成果', '课堂展示', '教学基本功', '教学计划', '教学总结', '考试分析', '进修学习', '听课记录','个人总结']
                     },
                     yAxis: {
@@ -229,7 +235,7 @@ export default {
                     }]
                 };
                 this.myChart.setOption(option)
-            }
+        }
   },
   watch: {}
 }

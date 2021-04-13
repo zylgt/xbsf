@@ -1,117 +1,84 @@
 <template>
    <div class='target'>
-       <div class='choose'>
-           <p>分析：</p> 
-            <el-select v-model="value" placeholder="请选择" >
-            <el-option
-                v-for="item in options"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-            </el-option>
-            </el-select>
-       </div>
+       <el-card class='el-card' >
+           <div class='filter-container'>
+            <p>指标类型：</p> 
+                <el-select v-model="target" placeholder="请选择" size='small' >
+                <el-option
+                    v-for="item in targetoptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+                </el-select>
+             <p>年级：</p> 
+                <el-select v-model="grade" placeholder="请选择" size='small' >
+                <el-option
+                    v-for="item in gradeoptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+                </el-select>
+             <p>科目：</p> 
+                <el-select v-model="object" placeholder="请选择" size='small' >
+                <el-option
+                    v-for="item in objectoptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                </el-option>
+                </el-select>
+        </div>
+       </el-card>
+        <el-row>
+           <el-card>
+               <el-col :span='18' style="position:relative;" >
+                    <div id='main' style='height:400px;'></div>
+                    <el-radio-group v-model="radio1" class='radio_choose' @change="radioChange" size='mini' >
+                        <el-radio-button label="得分"></el-radio-button>
+                        <el-radio-button label="数量"></el-radio-button>
+                    </el-radio-group>
+                </el-col>
+                <el-col :span='4'>
+                    <div class='teacher_order'>
+                        <p class='teacher_title' >教师资源排名</p>
+                        <p class='teacher_tiem' v-for="(item,index) in teacherOrder" :key='index' >
+                            <span :class='["teacher_num",item.order>3?"teacher_nums":""]' >{{item.order}}</span>
+                            <span class='teacher_name'>{{item.name}}</span>
+                            <span class='teacher_grade'>{{item.grade}}</span>
+                        </p>
+                    </div>
+                </el-col>
+           </el-card>
+       </el-row>
         <el-card>
-            <div id='main' style='height:400px;'></div>
-        </el-card>
-        <el-card>
-            <div class='card_title'>
-                <div class='card_left'>
-                    <el-tag>指标一</el-tag>
-                    <p class='card_tips'>获奖荣誉</p>
-                </div>
-                <div class='card_right'>
-                    国家级 5分/项；省级 4分/项；市级 3分/项
-                </div>
-            </div>
-            <div class='card_pro'>
-                <div class='pro_left'>
-                    <p class='pro_result'>3.1</p>
-                    <p>均分</p>
-                </div>
-                <div class='pro_right'>
-                    <div class='pro_list'>
-                        <el-progress :percentage="10" :show-text='false' status="success" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>5分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="16" :show-text='false' status="success" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>4分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                     <div class='pro_list'>
-                        <el-progress :percentage="30" :show-text='false' status="warning" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>3分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="46" :show-text='false' status="warning" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>2分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="16" :show-text='false' status="exception" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>1分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="10" :show-text='false' status="exception" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>0分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                </div>
-            </div>
-        </el-card>
-        <el-card>
-            <div class='card_title'>
-                <div class='card_left'>
-                    <el-tag>指标一</el-tag>
-                    <p class='card_tips'>科研成果</p>
-                </div>
-                <div class='card_right'>
-                    国家级 5分/项；省级 4分/项；市级 3分/项
-                </div>
-            </div>
-            <div class='card_pro'>
-                <div class='pro_left'>
-                    <p class='pro_result'>3.1</p>
-                    <p>均分</p>
-                </div>
-                <div class='pro_right'>
-                    <div class='pro_list'>
-                        <el-progress :percentage="10" :show-text='false' status="success" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>5分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="16" :show-text='false' status="success" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>4分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                     <div class='pro_list'>
-                        <el-progress :percentage="30" :show-text='false' status="warning" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>3分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="46" :show-text='false' status="warning" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>2分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="16" :show-text='false' status="exception" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>1分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                    <div class='pro_list'>
-                        <el-progress :percentage="10" :show-text='false' status="exception" :stroke-width="8"></el-progress>
-                        <p class='pro_fen'>0分：12人 </p>
-                        (<span class='pro_name'>张龙龙，张龙龙，张龙龙，张龙龙</span>)
-                    </div>
-                </div>
-            </div>
-        </el-card>
+                 <el-table v-loading="listLoading" :data="list1" header-row-class-name='headerBg' element-loading-text="正在查询中。。。"  fit highlight-current-row>
+                 <el-table-column align="center" label="序号" prop="id"/>
+
+                <el-table-column align="center" label="姓名" prop="name"/>
+
+                <el-table-column align="center" label="得分/数量" prop="grade"/>
+
+                <el-table-column align="center" label="排名" prop="order"/>
+
+                <el-table-column align="center" label="年级" prop="class"/>
+
+                <el-table-column align="center" label="科目" prop="object"/>
+
+                <el-table-column align="center" label="内容名称" prop="inner"/>
+
+                <el-table-column align="center" label="级别" prop="level"/>
+
+                <el-table-column align="center" label="文件类型" prop="type"/>
+
+                <el-table-column align="center" label="下载">
+                        <template>
+                            <span class='handle'> <i class='el-icon-download' ></i> </span>
+                        </template>
+                </el-table-column>
+            </el-table>
+            </el-card>
    </div>
 </template>
 <script>
@@ -120,10 +87,30 @@ export default {
   name: '',
   data () {
     return {
-        options:[{value:1,label:'2019-2020期末教师评比'},{value:2,label:'2020-2021期末教师评比'},
-        {value:3,label:'2019-2021期末教师评比'}],
-        value:'',
+        targetoptions:[{value:1,label:'个人总结'},{value:2,label:'荣誉获奖'},{value:3,label:'研修培训'}],
+        gradeoptions:[{value:1,label:'七年级'},{value:2,label:'八年级'},{value:3,label:'九年级'}],
+        objectoptions:[{value:1,label:'语文'},{value:2,label:'数学'},{value:3,label:'英语'}],
+        target:'',
+        grade:'',
+        object:'',
         myChart:{},
+        radio1:'得分',
+        teacherOrder:[
+            {'name':'孔玲玲','order':1,'grade':50},
+            {'name':'孔玲玲','order':2,'grade':50},
+            {'name':'孔玲玲','order':3,'grade':50},
+            {'name':'孔玲玲','order':4,'grade':50},
+            {'name':'孔玲玲','order':5,'grade':50},
+            {'name':'孔玲玲','order':6,'grade':50},
+            {'name':'孔玲玲','order':7,'grade':50},
+            {'name':'孔玲玲','order':8,'grade':50},
+            {'name':'孔玲玲','order':9,'grade':50},
+            {'name':'孔玲玲','order':10,'grade':50},],
+        listLoading:false,
+        list1:[{id:1,name:'xxx',grade:'90',order:1,class:'七年级',object:'语文',inner:'背诵课文',level:'省级',type:'word'},
+        {id:2,name:'xxx',grade:'90',order:1,class:'七年级',object:'语文',inner:'背诵课文',level:'省级',type:'word'},
+        {id:3,name:'xxx',grade:'90',order:1,class:'七年级',object:'语文',inner:'背诵课文',level:'省级',type:'word'},
+        {id:4,name:'xxx',grade:'90',order:1,class:'七年级',object:'语文',inner:'背诵课文',level:'省级',type:'word'},],
     }
   },
   components: {},
@@ -134,15 +121,26 @@ export default {
        this.initData();
   },
   methods: {
+      radioChange(e){
+          this.radio1 = e
+          this.initData();
+      },
       initData() {
+          let that = this;
                 // 绘制图表
                 const option = {
                     title: {
-                        text: '各指标均分'
+                        text: '教师总体分析'
                     },
                     tooltip: {},
                     xAxis: {
-                        data: ['获奖荣誉', '科研成果', '基本功', '教学计划', '教学总结', '教学成绩']
+                        axisTick:{
+                            show:false
+                        },
+                        axisLabel:{
+                            interval:0
+                        },
+                        data: ['荣誉获奖', '研修培训', '科研成果', '课堂展示', '教学基本功', '教学计划', '教学总结', '考试分析', '进修学习', '听课记录','个人总结']
                     },
                     yAxis: {
                         splitLine:{
@@ -152,37 +150,33 @@ export default {
                         }
                     },
                     series: [{
-                        name: '销量',
+                        name: that.radio1,
                         type: 'bar',
-                        barMaxWidth:'36%',
+                        barMaxWidth:'46%',
                         itemStyle:{
                             color:'#409EFF'
                         },
-                        label:{
-                            show: true,
-                            position: 'top',
-                            color:'#409EFF'
-                        },
-                        data: [7, 15, 19, 10, 10, 3]
+                        data: [7, 15, 19, 10, 10, 3,10,5,7,15,10,7]
                     }]
                 };
                 this.myChart.setOption(option)
-            }
+       }
   },
   watch: {}
 }
 </script>
 <style>
-.target .choose{
-    display: flex;
-    align-items:center;
-    justify-content:flex-start;
-    margin-bottom:20px;
+.target .filter-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size:12px;
 }
-
+.target .el-select{
+  margin-right:20px;
+}
 .target .el-card__body{
     padding:16px;
-    padding-bottom:0;
 }
 .target .card_header{
     display: flex;
@@ -255,5 +249,53 @@ export default {
 }
 .target .el-progress{
     width:66%;
+}
+.target .radio_choose{
+    position: absolute;
+    left:200px;
+    top:0;
+}
+.target .teacher_order{
+    height:100%;
+}
+.target .teacher_title{
+    font-size:16px;
+    height:30px;
+    line-height: 30px;
+    font-weight: bold;
+    margin-bottom:20px;
+}
+.target .teacher_tiem{
+    display: flex;
+    align-items: center;
+    height:30px;
+    justify-content: space-between;
+}
+.target .teacher_num{
+    width:20px;
+    height:20px;
+    text-align: center;
+    line-height: 20px;
+    color:#fff;
+    background:#409EFF;
+    font-size:12px;
+    font-weight:bold;
+}
+.target .teacher_nums{
+    background:#eee;
+    color:#333;
+}
+.target .teacher_name{
+    font-size:14px;
+    color:#666;
+}
+.target .teacher_grade{
+    font-size:14px;
+    color:#666;
+}
+.target .handle{
+    font-size:16px;
+    color:#1890FF;
+    cursor: pointer;
 }
 </style>

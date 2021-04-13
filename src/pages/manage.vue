@@ -46,10 +46,10 @@
                   </template>
                   <el-menu-item-group>
                     <el-menu-item index="honour">荣誉获奖</el-menu-item>
-                    <el-menu-item index="honour">研修培训</el-menu-item>
-                    <el-menu-item index="honour">科研成果</el-menu-item>
-                    <el-menu-item index="honour">课堂展示</el-menu-item>
-                    <el-menu-item index="honour">教学基本功</el-menu-item>
+                    <el-menu-item index="study">研修培训</el-menu-item>
+                    <el-menu-item index="result">科研成果</el-menu-item>
+                    <el-menu-item index="open">课堂展示</el-menu-item>
+                    <el-menu-item index="base">教学基本功</el-menu-item>
                   </el-menu-item-group>
               </el-submenu>
                <el-submenu index='2'>
@@ -59,11 +59,11 @@
                   </template>
                   <el-menu-item-group>
                       <el-menu-item index="plan1">教研组计划</el-menu-item>
-                      <el-menu-item index="plan1">学科备课组计划</el-menu-item>
-                      <el-menu-item index="plan1">教研组总结</el-menu-item>
-                      <el-menu-item index="plan1">学科备课组总结</el-menu-item>
-                      <el-menu-item index="plan1">教研组计划</el-menu-item>
-                      <el-menu-item index="plan1">学科备课组计划</el-menu-item>
+                      <el-menu-item index="plan2">学科备课组计划</el-menu-item>
+                      <el-menu-item index="plan3">教研组总结</el-menu-item>
+                      <el-menu-item index="plan4">学科备课组总结</el-menu-item>
+                      <el-menu-item index="plan5">教研组计划</el-menu-item>
+                      <el-menu-item index="plan6">学科备课组计划</el-menu-item>
                   </el-menu-item-group>
               </el-submenu>
               <el-submenu index='3'>

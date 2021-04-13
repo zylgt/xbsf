@@ -156,7 +156,7 @@ export default {
     return {
         keyword:'',
          listLoading:false,
-         options:[{value:1,label:'全部'},{value:2,label:'待审核'},{value:3,label:'已审核'},{value:3,label:'已驳回'}],
+         options:[{value:1,label:'全部'},{value:2,label:'待审核'},{value:3,label:'已审核'},{value:4,label:'已驳回'}],
         value:'',
          list1:[{name:'优秀班主任奖',company:'北京市及科教',grade:'市级',time:'2020-09-09 09:09:09',type:'word',mark:'3'},
          {name:'优秀班主任奖',company:'北京市及科教',grade:'市级',time:'2020-09-09 09:09:09',type:'word',mark:'3'},
@@ -182,8 +182,18 @@ export default {
         this.dialogImageUrl = file.url;
         this.dialogVisible = true;
       },
+      resetData(){
+          console.log(this.$route.fullPath)
+          if(this.$route.fullPath == '/honour'){
+            //   处理数据
+          }
+      }
   },
-  watch: {}
+  watch: {
+      $route:{
+          handler:'resetData'
+      }
+  }
 }
 </script>
 <style>

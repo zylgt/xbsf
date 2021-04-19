@@ -31,6 +31,34 @@
                 </el-option>
               </el-select>
             <el-menu default-active="home" style="min-height: 84%;" router>
+              <el-menu-item index='/schoolYear'>
+                <i class="el-icon-home"></i>
+                <span>学年设置</span>
+              </el-menu-item>
+              <el-menu-item index='/course'>
+                <i class="el-icon-home"></i>
+                <span>科目设置</span>
+              </el-menu-item>
+              <el-menu-item index='/grade'>
+                <i class="el-icon-home"></i>
+                <span>年级设置</span>
+              </el-menu-item>
+              <el-menu-item index='/cless'>
+                <i class="el-icon-home"></i>
+                <span>班级设置</span>
+              </el-menu-item>
+              <el-menu-item index='/user'>
+                <i class="el-icon-home"></i>
+                <span>用户设置</span>
+              </el-menu-item>
+              <el-menu-item index='/dict'>
+                <i class="el-icon-home"></i>
+                <span>指标设置</span>
+              </el-menu-item>
+              <el-menu-item index='/basicInfo'>
+                <i class="el-icon-home"></i>
+                <span>基本信息</span>
+              </el-menu-item>
               <el-menu-item index='/home'>
                 <i class="el-icon-user"></i>
                 <span slot="title">个人首页</span>
@@ -131,23 +159,25 @@
                     </div>
           </el-col>
 		    </el-row>
-         <el-dialog title="修改密码" :visible.sync="dialogFormVisible">
+         <el-dialog title="修改密码" width="20%" :visible.sync="dialogFormVisible" center>
         <el-form :model="form" size='mini' :rules="rules" ref="form" >
-            <el-form-item label="账号" label-width="80px">
+            <el-form-item label="账号" label-width="95px">
             <el-input v-model="form.account" autocomplete="off" style='width:200px;' :disabled="true" placeholder="admin" ></el-input>
             </el-form-item>
-             <el-form-item label="原始密码" prop='old' label-width="80px">
+             <el-form-item label="原始密码" prop='old' label-width="95px">
             <el-input v-model="form.old" type="password" autocomplete="off" style='width:200px;' ></el-input>
             </el-form-item>
-             <el-form-item label="新密码" prop='new' label-width="80px">
+             <el-form-item label="新密码" prop='new' label-width="95px">
+            <el-input v-model="form.new" type="password1" autocomplete="off" style='width:200px;' ></el-input>
+            </el-form-item>
+             <el-form-item label="确认新密码" prop='new' label-width="95px">
             <el-input v-model="form.new" type="password" autocomplete="off" style='width:200px;' ></el-input>
             </el-form-item>
-            <el-form-item >
+        </el-form>
+            <span slot="footer">
               <el-button @click="dialogFormVisible = false">取 消</el-button>
               <el-button type="primary" @click="submitForm('form')">确 定</el-button>
-            </el-form-item>
-        </el-form>
-       
+            </span>
         </el-dialog>
    </div>
 </template>

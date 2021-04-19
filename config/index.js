@@ -11,13 +11,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/infinitiConsult': {
-        target: 'https://infiniti.10k.xyz',  //目标接口域名
+      '/api': {
+        // target: 'http://82.156.10.153:82/api/',  //目标接口域名
+        target: '/api/',
         changeOrigin: true,  //是否跨域
         secure: false,  //target默认情况下，不接受运行在HTTPS上，且使用了无效证书的后端服务器。如果你想要接受, 则需设置该项为false
-        // pathRewrite: { // 如果接口本身没有/wxchat需要通过pathRewrite来重写了地址      重写接口
-        //   '^/wxchat: ' '   
-        // }
+        pathRewrite: { // 如果接口本身没有/wxchat需要通过pathRewrite来重写了地址      重写接口
+          '^/api':' '   
+        }
       }
     },
 

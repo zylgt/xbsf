@@ -32,6 +32,14 @@ const collectInfo = () => import('../pages/prograss/collectInfo')
 
 const personal = () => import('../pages/personal/personal')
 
+const schoolYear = () => import('../pages/schoolYear/schoolYear')
+const course = () => import('../pages/course/course')
+const grade = () =>  import('../pages/grade/grade')
+const cless = () => import('../pages/cless/cless')
+const user = () => import('../pages/user/user')
+const dict = () => import('../pages/dict/dict')
+const basicInfo = () => import('../pages/basicInfo/basicInfo')
+
 Vue.use(Router)
 
 export default new Router({
@@ -45,6 +53,36 @@ export default new Router({
       name: 'manage',
       component: manage,
       children:[{
+        path: '/schoolYear',
+        component: schoolYear,
+        name: 'schoolYear'
+      },
+      {
+        path: '/course',
+        component: course,
+        name: 'course'
+      },{
+        path: '/grade',
+        component: grade,
+        name: 'grade'
+      },{
+        path: '/cless',
+        component: cless,
+        name: 'cless'
+      },{
+        path: '/user',
+        component: user,
+        name: 'user'
+      },{
+        path: '/dict',
+        component: dict,
+        name: 'dict'
+      },{
+        path: '/basicInfo',
+        component: basicInfo,
+        name: 'basicInfo'
+      },
+      {
         path:'/home',
         component: home,
         name:'home'

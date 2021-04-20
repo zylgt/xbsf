@@ -1,10 +1,15 @@
 import axios from '../utils/axios';
 // 登录
 export function login(data){
+    let form = new FormData()
+    let keys = Object.keys(data)
+    keys.forEach(key => {
+        form.append(key, data[key])
+    })
     return axios({
-        url:'/infinitiConsult/login', //请求的地址
+        url:'/auth/login', //请求的地址
         method:'POST',
-        data
+        data: form
     })
 }
 // 获取列表

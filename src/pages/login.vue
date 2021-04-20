@@ -66,7 +66,6 @@
 </template>
 
 <script> 
-// 引入插件需要安装依赖
   import {login} from '@/api/api'
   import {  setToken } from '@/utils/auth'
   import Cookies from 'js-cookie'

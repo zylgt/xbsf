@@ -141,8 +141,11 @@ export default {
   computed: {
     wh(){
       let wh=''
-      console.log(this.list.length)
-      wh = 180+ this.list.length*80
+      if(this.list.length<=12){
+         wh = 1200
+      }else{
+         wh = 180+ this.list.length*80
+      }
       return wh 
     }
   },
@@ -211,12 +214,14 @@ export default {
 .table_box{
   width:100%;
   overflow-x:scroll;
+  position: relative;
 }
 .tables{
   background:#fff;
   border-spacing: 0;
   display: block;
-  position: relative;
+  min-width: 100%;
+  max-height:100%;
 }
 #tables tr{
   height:50px;
@@ -241,6 +246,7 @@ export default {
   height:50px;
   line-height: 50px;
   background:#fff;
+
 }
 .th_inner{
   display: flex;

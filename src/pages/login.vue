@@ -1,6 +1,26 @@
 <template>
   	<div class="login_page fillcontain">
-		  	<div class='web_info'>
+		  <vue-particles
+        color="#fff"
+        :particleOpacity="0.6"
+        :particlesNumber="100"
+        shapeType="circle"
+        :particleSize="3"
+        linesColor="#fff"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="100"
+        :moveSpeed="4"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+        class="lizi"
+      >
+      </vue-particles>
+	  	<div class='login_cont' >
+			<div class='web_info'>
 				  <img src="../../static/image/logo.png" alt="" class='login_logo'>
 				  <p class='logo_name'>教师综合管理平台</p>
 			</div>
@@ -11,32 +31,37 @@
 				<div class="form_contianer" v-show="showLogin">
 					<img src="../../static/image/avatar.png" alt="" class='login_avatar' >
 			
-				<div class='account_box'>
-					<p  :class='[loginRole == 1 ? "active" : "" , "account"]' @click='loginTab(1)'>教师</p>
-					<p  :class='[loginRole == 2 ? "active" : "" , "account"]' @click='loginTab(2)'>管理员</p>
+					<div class='account_box'>
+						<p  :class='[loginRole == 1 ? "active" : "" , "account"]' @click='loginTab(1)'>教师</p>
+						<p  :class='[loginRole == 2 ? "active" : "" , "account"]' @click='loginTab(2)'>管理员</p>
+					</div>
+					<div class='formBox'>
+						<el-form :model="loginForm" :rules="rules" ref="loginForm" size='small' >
+							<el-form-item prop="username">
+								<el-input v-model="loginForm.username" prefix-icon='el-icon-user' placeholder="用户名"><span>dsfsf</span></el-input>
+							</el-form-item>
+							<el-form-item prop="password">
+								<el-input type="password" prefix-icon='el-icon-lock' placeholder="密码" v-model="loginForm.pwd"></el-input>
+							</el-form-item>
+							<el-form-item prop="remember">
+								<el-checkbox v-model="checked">记住密码</el-checkbox>
+							</el-form-item>
+							<el-form-item>
+								<el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
+							</el-form-item>
+						</el-form>
+					</div>
 				</div>
-				<div class='formBox'>
-					<el-form :model="loginForm" :rules="rules" ref="loginForm" size='small' >
-						<el-form-item prop="username">
-							<el-input v-model="loginForm.username" prefix-icon='el-icon-user' placeholder="用户名"><span>dsfsf</span></el-input>
-						</el-form-item>
-						<el-form-item prop="password">
-							<el-input type="password" prefix-icon='el-icon-lock' placeholder="密码" v-model="loginForm.pwd"></el-input>
-						</el-form-item>
-						<el-form-item prop="remember">
-							<el-checkbox v-model="checked">记住密码</el-checkbox>
-						</el-form-item>
-						<el-form-item>
-							<el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
-						</el-form-item>
-					</el-form>
+			</div>
+			<div>
+				<img src="../../static/image/login_img.png" class='login_light_img' alt="">
+				<div class='web_cop' >
+					<p class='cop_label1'>北京教师邦科技发展有限公司 版权所有</p>
+					<p class='cop_label2'>京ICP备05001234号-85 <img src="../../static/image/login_an.png" alt="" class='an' > 京公网安备334267778865号</p>
 				</div>
-	  		</div>
 			</div>
-			<div class='web_cop' >
-				<p class='cop_label1'>北京教师邦科技发展有限公司 版权所有</p>
-				<p class='cop_label2'>京ICP备05001234号-85 <img src="../../static/image/login_an.png" alt="" class='an' > 京公网安备334267778865号</p>
-			</div>
+		</div>
+		  	
   	</div> 
 </template>
 
@@ -125,6 +150,21 @@
 
 <style scoped>
 /* 4e668a */
+.lizi{
+	width:100%;
+	height:400px;
+}
+.login_cont{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
 	.web_info{
 		display: flex;
 		align-items: center;
@@ -144,10 +184,11 @@
 		color:#fff;
 	}
 	.form_login{
-		width:60%;
+		width:56%;
 		border-radius:10px;
 		overflow: hidden;
 		display: flex;
+		margin: 0 auto;
 	}
 	.login_img{
 		width:55%;
@@ -155,6 +196,9 @@
 		align-items: center;
 		justify-content: center;
 		background:#4e668a;
+	}
+	.login_light_img{
+		width:100%;
 	}
 	.logo_img{
 		width:70%;
@@ -195,10 +239,6 @@
 	}
 	.login_page{
 		background-color: #314057;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		align-items: center;
 		position: relative;
 	}
 	.manage_tip{
